@@ -1,17 +1,26 @@
 import { Component } from "react";
+import Form from "./Form.jsx";
+import Todo from "./Todo";
+import StatusTabs from "./StatusTabs";
 
 class TodoContainer extends Component {
     render() {
         return (
-            <div className="card">
-                <div className="card-content">
-                    <form method="post">
-                        <div className="control">
-                            <input className="input is-normal" type="text" placeholder="What needs to be done?" />
-                        </div>
-                    </form>
+            <>
+                <div className="card">
+                    <div className="card-content">
+                        <Form />
+                    </div>
                 </div>
-            </div>
+                <div className="card mt-4">
+                    <div className="card-content">
+                        <StatusTabs />
+                        <div>
+                            <Todo />
+                        </div>
+                    </div>
+                </div>
+            </>
         )
     }
 }

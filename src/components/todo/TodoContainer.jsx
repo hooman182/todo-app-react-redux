@@ -2,6 +2,7 @@ import { Component } from "react";
 import Form from "./Form.jsx";
 import Todo from "./Todo";
 import StatusTabs from "./StatusTabs";
+import { connect } from "react-redux";
 
 class TodoContainer extends Component {
     render() {
@@ -16,7 +17,7 @@ class TodoContainer extends Component {
                     <div className="card-content">
                         <StatusTabs />
                         <div>
-                            <Todo />
+                            {this.props.todos.map(todo => <Todo data={todo} key={todo.id} />)}
                         </div>
                     </div>
                 </div>
@@ -25,4 +26,8 @@ class TodoContainer extends Component {
     }
 }
 
-export default TodoContainer;
+const mapStateToProps = state => ({
+    todos: state.todos
+})
+
+export default connect(mapStateToProps)(TodoContainer);

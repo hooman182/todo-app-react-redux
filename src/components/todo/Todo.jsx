@@ -5,7 +5,7 @@ import { deleteTodo, editTodo } from "../../actions";
 class Todo extends Component {
     state = {
         edit: false,
-        input: "",
+        input: this.props.data.text,
         id: null
     }
     deleteTodoClick = (index) => {
@@ -26,7 +26,7 @@ class Todo extends Component {
         const todo = this.props.data;
         return (
             <div className="d-flex justify-content-between align-items-center my-3">
-                <div className="flex-grow-1">
+                <div className="flex-grow-1 me-4">
                     {
                         !this.state.edit ?
                             <div className="form-check">
@@ -42,7 +42,7 @@ class Todo extends Component {
                     }
                 </div>
                 <div className="btn-group">
-                    <button className={`btn btn-${!this.state.edit ? 'primary' : 'warning'}`} onClick={this.editTodoClick.bind(this, todo.id)}>
+                    <button className={`btn btn-${!this.state.edit ? 'secondary' : 'warning'}`} onClick={this.editTodoClick.bind(this, todo.id)}>
                         {
                             !this.state.edit ?
                                 <i className="fas fa-pen"></i>

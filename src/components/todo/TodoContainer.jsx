@@ -7,11 +7,11 @@ import { connect } from "react-redux";
 class TodoContainer extends Component {
     render() {
         return (
-            <div className="row justify-content-between">
-                <div className="col-4">
+            <div className="row justify-content-between justify-content-md-center">
+                <div className="col-sm-12 col-md-10 col-lg-4 mt-3">
                     <Form />
                 </div>
-                <div className="col-8">
+                <div className="col-sm-12 col-md-10 col-lg-8 mt-3">
                     <div className="card">
                         <div className="card-body">
                             <StatusTabs />

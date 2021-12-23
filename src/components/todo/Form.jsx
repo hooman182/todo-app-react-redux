@@ -17,15 +17,13 @@ class Form extends Component {
     render() {
         return (
             <form method="post" onSubmit={this.formSubmitHandle}>
-                <div className="control">
-                    <input
-                        className="input is-normal"
-                        type="text"
-                        placeholder="What needs to be done?"
-                        value={this.state.input}
-                        onChange={this.inputChangeHandle}
-                    />
-                </div>
+                <input
+                    className="form-control"
+                    type="text"
+                    placeholder="What needs to be done?"
+                    value={this.state.input}
+                    onChange={this.inputChangeHandle}
+                />
             </form>
         )
     }

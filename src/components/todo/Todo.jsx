@@ -25,34 +25,34 @@ class Todo extends Component {
     render() {
         const todo = this.props.data;
         return (
-            <div className="columns">
-                <div className="column is-10">
+            <div className="d-flex justify-content-between align-items-center my-3">
+                <div className="flex-grow-1">
                     {
                         !this.state.edit ?
-                            <label className="checkbox">
-                                <input type="checkbox" className="mr-2" />
-                                {todo.text}
-                            </label>
+                            <div className="form-check">
+                                <input type="checkbox" className="form-check-input" id={todo.id} />
+                                <label className="form-check-label h5" for={todo.id}>
+                                    {todo.text}
+                                </label>
+                            </div>
                             :
                             <form method="post" onSubmit={this.formSubmitHandle}>
-                                <input className="input is-small is-warning" type="text" value={this.state.input} onChange={this.inputChangeHandle} />
+                                <input className="form-control" type="text" value={this.state.input} onChange={this.inputChangeHandle} />
                             </form>
                     }
                 </div>
-                <div className="column">
-                    <div className="buttons has-addons are-small">
-                        <button className="button is-danger" onClick={this.deleteTodoClick.bind(this, todo.id)}>
-                            <i className="fas fa-trash"></i>
-                        </button>
-                        <button className={`button ${!this.state.edit ? 'is-info' : 'is-warning' }`} onClick={this.editTodoClick.bind(this, todo.id)}>
-                            {
-                                !this.state.edit ?
-                                    <i className="fas fa-pen"></i>
-                                    :
-                                    <i class="fas fa-times"></i>
-                            }
-                        </button>
-                    </div>
+                <div className="btn-group">
+                    <button className={`btn btn-${!this.state.edit ? 'primary' : 'warning'}`} onClick={this.editTodoClick.bind(this, todo.id)}>
+                        {
+                            !this.state.edit ?
+                                <i className="fas fa-pen"></i>
+                                :
+                                <i class="fas fa-times"></i>
+                        }
+                    </button>
+                    <button className="btn btn-primary" onClick={this.deleteTodoClick.bind(this, todo.id)}>
+                        <i className="fas fa-trash"></i>
+                    </button>
                 </div>
             </div>
         )

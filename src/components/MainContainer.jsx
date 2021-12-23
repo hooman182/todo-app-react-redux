@@ -4,9 +4,9 @@ import TodoContainer from "./todo/TodoContainer.jsx";
 class MainContainer extends Component {
     render() {
         return (
-            <main className="container">
-                <div className="columns">
-                    <div className="column is-8 is-offset-2">
+            <main className="container-fluid pt-2">
+                <div className="row justify-content-center">
+                    <div className="col-sm-12 col-lg-12">
                         <TodoContainer />
                     </div>
                 </div>

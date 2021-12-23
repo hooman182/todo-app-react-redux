@@ -7,21 +7,21 @@ import { connect } from "react-redux";
 class TodoContainer extends Component {
     render() {
         return (
-            <>
-                <div className="card">
-                    <div className="card-content">
-                        <Form />
-                    </div>
+            <div className="row justify-content-between">
+                <div className="col-4">
+                    <Form />
                 </div>
-                <div className="card mt-4">
-                    <div className="card-content">
-                        <StatusTabs />
-                        <div>
-                            {this.props.todos.map(todo => <Todo data={todo} key={todo.id} />)}
+                <div className="col-8">
+                    <div className="card">
+                        <div className="card-body">
+                            <StatusTabs />
+                            <div className="px-3">
+                                {this.props.todos.map(todo => <Todo data={todo} key={todo.id} />)}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </>
+            </div>
         )
     }
 }

@@ -26,10 +26,18 @@ const reducer = (state = initialState, action) => {
             const todoIndex = state.todos.findIndex(item => item.id == action.payload.id);
             state.todos[todoIndex].text = action.payload.text;
             const updateTodos = state.todos;
-            console.log(updateTodos);
             return {
                 ...state,
                 todos: [...updateTodos]
+            }
+        case "COMPLETE_TODO":
+            const index = state.todos.findIndex(item => item.id == action.payload.id);
+            state.todos[index].complete = action.payload.value;
+            const newTodos = state.todos;
+            console.log(newTodos);
+            return {
+                ...state,
+                todos: [...newTodos]
             }
         default:
             return state;

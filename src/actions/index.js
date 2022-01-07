@@ -13,4 +13,9 @@ const editTodo = (text, id) => ({
     payload: { text, id }
 })
 
-export { addTodo, deleteTodo, editTodo }
+const completeTodo = (value, id) => ({
+    type: "COMPLETE_TODO",
+    payload: { value, id }
+})
+
+export { addTodo, deleteTodo, editTodo, completeTodo }

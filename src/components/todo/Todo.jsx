@@ -1,12 +1,13 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import { deleteTodo, editTodo } from "../../actions";
+import { deleteTodo, editTodo, completeTodo } from "../../actions";
 
 class Todo extends Component {
     state = {
         edit: false,
         input: this.props.data.text,
-        id: null
+        id: null,
+        checked: false
     }
     deleteTodoClick = (index) => {
         this.props.deleteTodo(index);
@@ -22,16 +23,21 @@ class Todo extends Component {
     inputChangeHandle = (e) => {
         this.setState({ input: e.target.value });
     }
+    checkboxChangeHandle = () => {
+        this.setState({ checked: !this.state.checked })
+        this.props.completeTodo(this.state.checked, this.props.data.id)
+    }
     render() {
         const todo = this.props.data;
+        const lineThrough = this.state.checked ? 'text-decoration-line-through' : ''
         return (
             <div className="d-flex justify-content-between align-items-center my-3">
                 <div className="flex-grow-1 me-4">
                     {
                         !this.state.edit ?
                             <div className="form-check">
-                                <input type="checkbox" className="form-check-input" id={todo.id} />
-                                <label className="form-check-label h5" for={todo.id}>
+                                <input type="checkbox" className="form-check-input" id={todo.id} onChange={this.checkboxChangeHandle} checked={this.state.checked} />
+                                <label className={`${lineThrough} form-check-label h5`} htmlFor={todo.id}>
                                     {todo.text}
                                 </label>
                             </div>
@@ -59,4 +65,4 @@ class Todo extends Component {
     }
 }
 
-export default connect(null, { deleteTodo, editTodo })(Todo);
+export default connect(null, { deleteTodo, editTodo, completeTodo })(Todo);

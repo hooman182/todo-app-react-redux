@@ -3,8 +3,8 @@ import { Component } from "react";
 class Header extends Component {
     render() {
         return (
-            <header class="bg-light text-center">
-                <h1 class="p-3 h3">
+            <header className="bg-dark text-center">
+                <h1 className="h2 text-secondary p-3">
                     Basic Redux Todo App
                 </h1>
             </header>

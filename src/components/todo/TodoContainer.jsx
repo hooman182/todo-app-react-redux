@@ -1,7 +1,6 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import Form from "./Form.jsx";
 import Todo from "./Todo";
-import StatusTabs from "./StatusTabs";
 import { connect } from "react-redux";
 
 class TodoContainer extends Component {
@@ -14,10 +13,8 @@ class TodoContainer extends Component {
                 <div className="col-sm-12 col-md-10 col-lg-8 mt-3">
                     <div className="card">
                         <div className="card-body">
-                            <StatusTabs />
-                            <div className="px-3">
-                                {this.props.todos.map(todo => <Todo data={todo} key={todo.id} />)}
-                            </div>
+                            {!this.props.todos.length && <p className="text-center fs-3 fw-bold text-secondary">Nothing todo!</p>}
+                            {this.props.todos.map(todo => <Todo data={todo} key={todo.id} />)}
                         </div>
                     </div>
                 </div>

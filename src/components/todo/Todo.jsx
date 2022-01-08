@@ -53,7 +53,7 @@ class Todo extends Component {
                             !this.state.edit ?
                                 <i className="fas fa-pen"></i>
                                 :
-                                <i class="fas fa-times"></i>
+                                <i className="fas fa-times"></i>
                         }
                     </button>
                     <button className="btn btn-primary" onClick={this.deleteTodoClick.bind(this, todo.id)}>

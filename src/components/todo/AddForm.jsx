@@ -2,7 +2,7 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import { addTodo } from "../../actions";
 
-class Form extends Component {
+class AddForm extends Component {
     state = {
         input: ""
     }
@@ -23,10 +23,11 @@ class Form extends Component {
                     placeholder="What needs to be done?"
                     value={this.state.input}
                     onChange={this.inputChangeHandle}
+                    autoFocus
                 />
             </form>
         )
     }
 }
 
-export default connect(null, { addTodo })(Form);
+export default connect(null, { addTodo })(AddForm);

@@ -8,14 +8,14 @@ const deleteTodo = key => ({
     payload: key
 })
 
-const editTodo = (text, id) => ({
-    type: "EDIT_TODO",
+const updateTodo = (text, id) => ({
+    type: "UPDATE_TODO",
     payload: { text, id }
 })
 
-const completeTodo = (value, id) => ({
-    type: "COMPLETE_TODO",
+const todoToggled = (value, id) => ({
+    type: "TODO_TOGGLED",
     payload: { value, id }
 })
 
-export { addTodo, deleteTodo, editTodo, completeTodo }
+export { addTodo, deleteTodo, updateTodo, todoToggled }

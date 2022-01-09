@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import { deleteTodo, editTodo, completeTodo } from "../../actions";
+import { deleteTodo, updateTodo, todoToggled } from "../../actions";
 
 class Todo extends Component {
     state = {
@@ -17,7 +17,7 @@ class Todo extends Component {
     }
     formSubmitHandle = (e) => {
         e.preventDefault();
-        this.props.editTodo(this.state.input, this.props.data.id);
+        this.props.updateTodo(this.state.input, this.props.data.id);
         this.setState({ edit: false })
     }
     inputChangeHandle = (e) => {
@@ -25,18 +25,18 @@ class Todo extends Component {
     }
     checkboxChangeHandle = () => {
         this.setState({ checked: !this.state.checked })
-        this.props.completeTodo(this.state.checked, this.props.data.id)
+        this.props.todoToggled(this.state.checked, this.props.data.id)
     }
     render() {
         const todo = this.props.data;
-        const lineThrough = this.state.checked ? 'text-decoration-line-through' : ''
+        const lineThrough = todo.complete ? 'text-decoration-line-through' : ''
         return (
             <div className="d-flex justify-content-between align-items-center my-3">
                 <div className="flex-grow-1 me-4">
                     {
                         !this.state.edit ?
                             <div className="form-check">
-                                <input type="checkbox" className="form-check-input" id={todo.id} onChange={this.checkboxChangeHandle} checked={this.state.checked} />
+                                <input type="checkbox" className="form-check-input" id={todo.id} onChange={this.checkboxChangeHandle} checked={todo.complete} />
                                 <label className={`${lineThrough} form-check-label h5`} htmlFor={todo.id}>
                                     {todo.text}
                                 </label>
@@ -65,4 +65,4 @@ class Todo extends Component {
     }
 }
 
-export default connect(null, { deleteTodo, editTodo, completeTodo })(Todo);
+export default connect(null, { deleteTodo, updateTodo, todoToggled })(Todo);

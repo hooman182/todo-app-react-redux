@@ -17,28 +17,17 @@ const reducer = (state = initialState, action) => {
                 ]
             };
         case "DELETE_TODO":
-            const todos = state.todos.filter(todo => todo.id != action.payload)
+            const todos = state.todos.filter(todo => todo.id !== action.payload)
             return {
                 ...state,
                 todos: [...todos]
             };
         case "EDIT_TODO":
-            const todoIndex = state.todos.findIndex(item => item.id == action.payload.id);
-            state.todos[todoIndex].text = action.payload.text;
-            const updateTodos = state.todos;
-            return {
-                ...state,
-                todos: [...updateTodos]
-            }
+            const todo = state.todos.find(todo => todo.id === action.payload.id)
+            todo.text = action.payload.text
         case "COMPLETE_TODO":
-            const index = state.todos.findIndex(item => item.id == action.payload.id);
-            state.todos[index].complete = action.payload.value;
-            const newTodos = state.todos;
-            console.log(newTodos);
-            return {
-                ...state,
-                todos: [...newTodos]
-            }
+            const findTodo = state.todos.find(todo => todo.id === action.payload.id)
+            findTodo.complete = !findTodo.complete
         default:
             return state;
     }

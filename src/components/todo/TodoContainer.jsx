@@ -13,10 +13,10 @@ class TodoContainer extends Component {
     render() {
         return (
             <div className="row justify-content-between justify-content-md-center">
-                <div className="col-sm-12 col-md-10 col-lg-4 mt-3">
+                <div className="col-sm-12 col-md-10 col-lg-5 mt-3">
                     <AddForm />
                 </div>
-                <div className="col-sm-12 col-md-10 col-lg-8 mt-3">
+                <div className="col-sm-12 col-md-10 col-lg-7 mt-3">
 
                     <ul className="nav nav-tabs">
                         <li className="nav-item">

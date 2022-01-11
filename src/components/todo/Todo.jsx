@@ -44,13 +44,13 @@ class Todo extends Component {
                     <button className={`btn btn-${!this.state.edit ? 'secondary' : 'warning'}`} onClick={this.editTodoClick.bind(this, todo.id)}>
                         {
                             !this.state.edit ?
-                                <i className="fas fa-pen"></i>
+                                <i className="bi bi-pen-fill"></i>
                                 :
-                                <i className="fas fa-times"></i>
+                                <i className="bi bi-x-lg"></i>
                         }
                     </button>
                     <button className="btn btn-primary" onClick={this.deleteTodoClick.bind(this, todo.id)}>
-                        <i className="fas fa-trash"></i>
+                        <i class="bi bi-trash-fill"></i>
                     </button>
                 </div>
             </div>

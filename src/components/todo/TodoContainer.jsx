@@ -18,15 +18,15 @@ class TodoContainer extends Component {
                 </div>
                 <div className="col-sm-12 col-md-10 col-lg-8 mt-3">
 
-                    <ul class="nav nav-tabs d-flex justify-content-center">
-                        <li class="nav-item">
-                            <button class={`nav-link ${this.state.statusTab == "all" ? "active" : ""}`} onClick={this.tabClick.bind(this, "all")}>All</button>
+                    <ul className="nav nav-tabs">
+                        <li className="nav-item">
+                            <button className={`nav-link ${this.state.statusTab == "all" ? "active" : ""}`} onClick={this.tabClick.bind(this, "all")}>All</button>
                         </li>
-                        <li class="nav-item">
-                            <button class={`nav-link ${this.state.statusTab == "active" ? "active" : ""}`} onClick={this.tabClick.bind(this, "active")}>Active</button>
+                        <li className="nav-item">
+                            <button className={`nav-link ${this.state.statusTab == "active" ? "active" : ""}`} onClick={this.tabClick.bind(this, "active")}>Active</button>
                         </li>
-                        <li class="nav-item">
-                            <button class={`nav-link ${this.state.statusTab == "completed" ? "active" : ""}`} onClick={this.tabClick.bind(this, "completed")}>Completed</button>
+                        <li className="nav-item">
+                            <button className={`nav-link ${this.state.statusTab == "completed" ? "active" : ""}`} onClick={this.tabClick.bind(this, "completed")}>Completed</button>
                         </li>
                     </ul>
 

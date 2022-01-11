@@ -1,31 +1,26 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import { deleteTodo, updateTodo, todoToggled } from "../../actions";
+import { deleteTodo, todoToggled } from "../../actions";
+import UpdateForm from "./UpdateForm";
 
 class Todo extends Component {
     state = {
         edit: false,
         input: this.props.data.text,
-        id: null,
         checked: false
     }
-    deleteTodoClick = (index) => {
+    deleteTodoClick(index) {
         this.props.deleteTodo(index);
     }
     editTodoClick = (index) => {
         this.setState({ edit: !this.state.edit, id: index })
     }
-    formSubmitHandle = (e) => {
-        e.preventDefault();
-        this.props.updateTodo(this.state.input, this.props.data.id);
-        this.setState({ edit: false })
-    }
-    inputChangeHandle = (e) => {
-        this.setState({ input: e.target.value });
-    }
     checkboxChangeHandle = () => {
         this.setState({ checked: !this.state.checked })
         this.props.todoToggled(this.state.checked, this.props.data.id)
+    }
+    changeEditHandle() {
+        this.setState({ edit: false })
     }
     render() {
         const todo = this.props.data;
@@ -42,9 +37,7 @@ class Todo extends Component {
                                 </label>
                             </div>
                             :
-                            <form method="post" onSubmit={this.formSubmitHandle}>
-                                <input className="form-control" type="text" value={this.state.input} onChange={this.inputChangeHandle} />
-                            </form>
+                            <UpdateForm value={todo.text} id={todo.id} isEdit={this.changeEditHandle.bind(this)} />
                     }
                 </div>
                 <div className="btn-group">
@@ -65,4 +58,4 @@ class Todo extends Component {
     }
 }
 
-export default connect(null, { deleteTodo, updateTodo, todoToggled })(Todo);
+export default connect(null, { deleteTodo, todoToggled })(Todo);
